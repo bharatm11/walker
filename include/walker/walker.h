@@ -33,31 +33,39 @@
 * THE POSSIBILITY OF SUCH DAMAGE.
 
 /**
-* @file walker.cpp
+* @file walker.h
 * @author Bharat Mathur
-* @date 17 November 2018
+* @date 16 November 2018
 * @copyright 2018 Bharat Mathur
-* @brief This file implements the methods for class "walker"
-* This class cpp file defines data members and methods applicable for class
-* walker to make the robot go straight or return
+* @brief This file defines the methods for class "walker"
 */
+#ifndef WALKER_H_
+#define WALKER_H_
 
-#include "walker/walker.h"
+#include <geometry_msgs/Twist.h>
+#include <sensor_msgs/LaserScan.h>
+#include <ros/console.h>
+#include "ros/ros.h"
 
-geometry_msgs::Twist goStraight() {
-  rob_output.linear.x = 0.05;
-  rob_output.linear.y = 0;
-  rob_output.linear.z = 0;
-  rob_output.angular.x = 0;
-  rob_output.angular.y = 0;
-  rob_output.angular.z = 0;
-}
+class walker {
+private:
+  /**
+  * @brief distMin is the minimum distance value recorded from the laser sensor
+  */
+  geometry_msgs::Twist rob_output;
+public:
+  /**
+  * @brief This is makes the robot go on in a straight line
+  * @return geometry_msgs::Twist
+  */
+  geometry_msgs::Twist goStraight();
+  /**
+  * @brief This makes the robot turn
+  * @return geometry_msgs::Twist
+  */
+  geometry_msgs::Twist turn();
+};
 
-geometry_msgs::Twist goStraight() {
-  rob_output.linear.x = 0;
-  rob_output.linear.y = 0;
-  rob_output.linear.z = 0;
-  rob_output.angular.x = 0;
-  rob_output.angular.y = 0;
-  rob_output.angular.z = 90;
-}
+
+
+#endif /* WALKER_H_ */

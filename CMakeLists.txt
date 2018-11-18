@@ -120,7 +120,7 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(main src/main.cpp src/walker.cpp)
+add_executable(main src/main.cpp src/walker_sensor.cpp src/walker.cpp)
 target_link_libraries(main ${catkin_LIBRARIES})
 
 ## Declare a C++ library
