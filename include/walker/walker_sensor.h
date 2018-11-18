@@ -33,7 +33,7 @@
 * THE POSSIBILITY OF SUCH DAMAGE.
 
 /**
-* @file walker.hpp
+* @file walker_sensor.hpp
 * @author Bharat Mathur
 * @date 16 November 2018
 * @copyright 2018 Bharat Mathur
@@ -74,4 +74,4 @@ public:
 
 
 
-#endif /* WALKER_H_ */
+#endif /* WALKER_SENSOR_H_ */
