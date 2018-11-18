@@ -44,7 +44,7 @@
 
 #include "walker/walker.h"
 
-geometry_msgs::Twist goStraight() {
+geometry_msgs::Twist walker::goStraight() {
   rob_output.linear.x = 0.05;
   rob_output.linear.y = 0;
   rob_output.linear.z = 0;
@@ -53,7 +53,7 @@ geometry_msgs::Twist goStraight() {
   rob_output.angular.z = 0;
 }
 
-geometry_msgs::Twist goStraight() {
+geometry_msgs::Twist walker::turn() {
   rob_output.linear.x = 0;
   rob_output.linear.y = 0;
   rob_output.linear.z = 0;
