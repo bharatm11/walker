@@ -45,19 +45,23 @@
 #include "walker/walker.h"
 
 geometry_msgs::Twist walker::goStraight() {
-  rob_output.linear.x = 0.05;
+  rob_output.linear.x = 0.5;
   rob_output.linear.y = 0;
   rob_output.linear.z = 0;
   rob_output.angular.x = 0;
   rob_output.angular.y = 0;
   rob_output.angular.z = 0;
+  ROS_INFO_STREAM("wk.rob_output.linear.x");
+  return rob_output;
 }
 
 geometry_msgs::Twist walker::turn() {
   rob_output.linear.x = 0;
-  rob_output.linear.y = 0;
+  rob_output.linear.y =0;
   rob_output.linear.z = 0;
   rob_output.angular.x = 0;
   rob_output.angular.y = 0;
-  rob_output.angular.z = 90;
+  rob_output.angular.z = M_PI_2;
+  ROS_INFO_STREAM("hgut");
+  return rob_output;
 }
