@@ -55,18 +55,16 @@ int main(int argc, char **argv) {
   double threshold = 3;
   ros::NodeHandle n;
   ros::Publisher robPub = n.advertise<geometry_msgs::Twist>("/mobile_base/commands/velocity", 1000);
-  ros::Publisher robPub2 = n.advertise<geometry_msgs::Twist>("/my_pub", 1000);
   ros::Subscriber laserSensorSub = n.subscribe("/scan", 100,&walker_sensor::laserCallback, &wkSense);
   ros::Rate loop_rate(10);
   geometry_msgs::Twist output;
   while (ros::ok()) {
     if (wkSense.detectObstacle(threshold)) {
       output = wk.turn();
-      //ROS_INFO_STREAM("Turning");
+      ROS_INFO_STREAM("Turning");
     } else {
       output = wk.goStraight();
-      //ROS_INFO_STREAM("Going Straight");
-
+      ROS_INFO_STREAM("Going Straight");
     }
     robPub.publish(output);
     robPub2.publish(output);
