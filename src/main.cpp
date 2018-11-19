@@ -67,7 +67,6 @@ int main(int argc, char **argv) {
       ROS_INFO_STREAM("Going Straight");
     }
     robPub.publish(output);
-    robPub2.publish(output);
     ros::spinOnce();
     loop_rate.sleep();
   }
