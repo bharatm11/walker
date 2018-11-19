@@ -39,11 +39,15 @@
 * @copyright 2018 Bharat Mathur
 * @brief This file implements the methods for class "walker"
 * This class cpp file defines data members and methods applicable for class
-* walker to make the robot go straight or return
+* walker to make the robot go straight or turn
 */
 
 #include "walker/walker.h"
 
+/**
+* @brief This is makes the robot go on in a straight line
+* @return geometry_msgs::Twist
+*/
 geometry_msgs::Twist walker::goStraight() {
   rob_output.linear.x = 0.5;
   rob_output.linear.y = 0;
@@ -54,10 +58,13 @@ geometry_msgs::Twist walker::goStraight() {
   ROS_INFO_STREAM("wk.rob_output.linear.x");
   return rob_output;
 }
-
+/**
+* @brief This makes the robot turn
+* @return geometry_msgs::Twist
+*/
 geometry_msgs::Twist walker::turn() {
   rob_output.linear.x = 0;
-  rob_output.linear.y =0;
+  rob_output.linear.y = 0;
   rob_output.linear.z = 0;
   rob_output.angular.x = 0;
   rob_output.angular.y = 0;

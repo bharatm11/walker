@@ -44,13 +44,25 @@
 */
 
 #include "walker/walker_sensor.h"
-
+/**
+* @brief This is the callback function for the laser sensor. It also gets the
+* minimum distance to an obstacle
+* @param [in] scan is a sensor_msgs::LaserScan message which contains distance
+* data.
+* @return void
+*/
 void walker_sensor::laserCallback(const sensor_msgs::LaserScanConstPtr& scan) {
   this->distMin = *std::min_element(scan->ranges.begin(), scan->ranges.end());
 }
-
+/**
+* @brief This function determines if the robot needs to turn or not by
+* comparing the distMin with distThreshold
+* @param [in] distThreshold is the minimum threshold distance at which the
+* robot is supposed to turn
+* @return bool
+*/
 bool walker_sensor::detectObstacle(double distThreshold) {
-  if(this->distMin < distThreshold) {
+  if (this->distMin < distThreshold) {
     return true;
   } else {
     return false;

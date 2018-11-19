@@ -37,10 +37,11 @@
 * @author Bharat Mathur
 * @date 16 November 2018
 * @copyright 2018 Bharat Mathur
-* @brief This file defines the methods for class "walker"
+* @brief This file defines the methods for class "walker" to make the robot
+* go straight or turn
 */
-#ifndef WALKER_H_
-#define WALKER_H_
+#ifndef ENPM_SOFT_DEV_COURSE_WALKER_WS_SRC_WALKER_INCLUDE_WALKER_WALKER_H_
+#define ENPM_SOFT_DEV_COURSE_WALKER_WS_SRC_WALKER_INCLUDE_WALKER_WALKER_H_
 
 #include <geometry_msgs/Twist.h>
 #include <sensor_msgs/LaserScan.h>
@@ -48,24 +49,24 @@
 #include "ros/ros.h"
 
 class walker {
-private:
-  /**
-  * @brief distMin is the minimum distance value recorded from the laser sensor
-  */
-  geometry_msgs::Twist rob_output;
-public:
-  /**
-  * @brief This is makes the robot go on in a straight line
-  * @return geometry_msgs::Twist
-  */
-  geometry_msgs::Twist goStraight();
-  /**
-  * @brief This makes the robot turn
-  * @return geometry_msgs::Twist
-  */
-  geometry_msgs::Twist turn();
+  private:
+    /**
+    * @brief rob_output is the geometry_msgs::Twist command given to the robot
+    */
+    geometry_msgs::Twist rob_output;
+  public:
+    /**
+    * @brief This is makes the robot go on in a straight line
+    * @return geometry_msgs::Twist
+    */
+    geometry_msgs::Twist goStraight();
+    /**
+    * @brief This makes the robot turn
+    * @return geometry_msgs::Twist
+    */
+    geometry_msgs::Twist turn();
 };
 
 
 
-#endif /* WALKER_H_ */
+#endif /* ENPM_SOFT_DEV_COURSE_WALKER_WS_SRC_WALKER_INCLUDE_WALKER_WALKER_H_ */

@@ -1,0 +1,8 @@
+bharat@bharat-Inspiron-15-7000-Gaming:~/enpm_soft_dev_course/walker_ws/src/walker$ cpplint src/main.cpp src/walker.cpp src/walker_sensor.cpp include/walker/walker.h include/walker/walker_sensor.h 
+Done processing src/main.cpp
+Done processing src/walker.cpp
+Done processing src/walker_sensor.cpp
+Done processing include/walker/walker.h
+Done processing include/walker/walker_sensor.h
+
+

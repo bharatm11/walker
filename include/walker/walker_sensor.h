@@ -37,10 +37,11 @@
 * @author Bharat Mathur
 * @date 16 November 2018
 * @copyright 2018 Bharat Mathur
-* @brief This file defines the methods for class "walker_sensor"
+* @brief This file defines the methods for class "walker_sensor" to read laser
+* sensor values and determine whether the robot needs to turn or not
 */
-#ifndef WALKER_SENSOR_H_
-#define WALKER_SENSOR_H_
+#ifndef ENPM_SOFT_DEV_COURSE_WALKER_WS_SRC_WALKER_INCLUDE_WALKER_WALKER_SENSOR_H_
+#define ENPM_SOFT_DEV_COURSE_WALKER_WS_SRC_WALKER_INCLUDE_WALKER_WALKER_SENSOR_H_
 
 #include <geometry_msgs/Twist.h>
 #include <sensor_msgs/LaserScan.h>
@@ -48,30 +49,31 @@
 #include "ros/ros.h"
 
 class walker_sensor {
-private:
-  /**
-  * @brief distMin is the minimum distance value recorded from the laser sensor
-  */
-  double distMin;
-public:
-  /**
-  * @brief This is the callback function for the laser sensor. It also gets the
-  * minimum distance to an obstacle
-  * @param [in] scan is a sensor_msgs::LaserScan message which contains distance
-  * data.
-  * @return void
-  */
-  void laserCallback(const sensor_msgs::LaserScanConstPtr& scan);
-  /**
-  * @brief This function determines if the robot needs to turn or not by
-  * comparing the distMin with distThreshold
-  * @param [in] distThreshold is the minimum threshold distance at which the
-  * robot is supposed to turn
-  * @return bool
-  */
-  bool detectObstacle(double distThreshold);
-};
+  private:
+    /**
+    * @brief distMin is the minimum distance value recorded from the laser sensor
+    */
+    double distMin;
+
+  public:
+    /**
+    * @brief This is the callback function for the laser sensor. It also gets the
+    * minimum distance to an obstacle
+    * @param [in] scan is a sensor_msgs::LaserScan message which contains distance
+    * data.
+    * @return void
+    */
+    void laserCallback(const sensor_msgs::LaserScanConstPtr& scan);
+    /**
+    * @brief This function determines if the robot needs to turn or not by
+    * comparing the distMin with distThreshold
+    * @param [in] distThreshold is the minimum threshold distance at which the
+    * robot is supposed to turn
+    * @return bool
+    */
+    bool detectObstacle(double distThreshold);
+  };
 
 
 
-#endif /* WALKER_SENSOR_H_ */
+#endif  // ENPM_SOFT_DEV_COURSE_WALKER_WS_SRC_WALKER_INCLUDE_WALKER_WALKER_SENSOR_H_

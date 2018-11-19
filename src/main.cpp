@@ -54,8 +54,10 @@ int main(int argc, char **argv) {
   walker wk;
   double threshold = 3;
   ros::NodeHandle n;
-  ros::Publisher robPub = n.advertise<geometry_msgs::Twist>("/mobile_base/commands/velocity", 1000);
-  ros::Subscriber laserSensorSub = n.subscribe("/scan", 100,&walker_sensor::laserCallback, &wkSense);
+  ros::Publisher robPub =
+  n.advertise<geometry_msgs::Twist>("/mobile_base/commands/velocity", 1000);
+  ros::Subscriber laserSensorSub
+  = n.subscribe("/scan", 100, &walker_sensor::laserCallback, &wkSense);
   ros::Rate loop_rate(10);
   geometry_msgs::Twist output;
   while (ros::ok()) {
