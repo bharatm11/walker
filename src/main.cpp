@@ -55,10 +55,10 @@ int main(int argc, char **argv) {
   walker_sensor wkSense;
   walker wk;
   //threshold is the distance from object when robot starts turning
-  double threshold = 3;
+  double threshold = 1;
   //initiate node
   ros::NodeHandle n;
-  //this publishes geometry_msgs::Twist commands to the robot 
+  //this publishes geometry_msgs::Twist commands to the robot
   ros::Publisher robPub =
   n.advertise<geometry_msgs::Twist>("/mobile_base/commands/velocity", 1000);
   //this reads the laser sensor
