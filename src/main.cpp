@@ -49,22 +49,30 @@
 #include "walker/walker.h"
 
 int main(int argc, char **argv) {
+  //initiate node
   ros::init(argc, argv, "walker");
+  //initiate class objects
   walker_sensor wkSense;
   walker wk;
+  //threshold is the distance from object when robot starts turning
   double threshold = 3;
+  //initiate node
   ros::NodeHandle n;
+  //this publishes geometry_msgs::Twist commands to the robot 
   ros::Publisher robPub =
   n.advertise<geometry_msgs::Twist>("/mobile_base/commands/velocity", 1000);
+  //this reads the laser sensor
   ros::Subscriber laserSensorSub
   = n.subscribe("/scan", 100, &walker_sensor::laserCallback, &wkSense);
   ros::Rate loop_rate(10);
+  //output is the geometry_msgs::Twist fed to the robot
   geometry_msgs::Twist output;
   while (ros::ok()) {
+    //if detect obstacle returns true
     if (wkSense.detectObstacle(threshold)) {
       output = wk.turn();
       ROS_INFO_STREAM("Turning");
-    } else {
+    } else {  //if detect obstacle returns false
       output = wk.goStraight();
       ROS_INFO_STREAM("Going Straight");
     }
