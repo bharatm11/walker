@@ -52,6 +52,7 @@
 * @return void
 */
 void walker_sensor::laserCallback(const sensor_msgs::LaserScanConstPtr& scan) {
+  //get minimum distance value from scan and equate to walker_sensor::distMin
   this->distMin = *std::min_element(scan->ranges.begin(), scan->ranges.end());
 }
 /**
@@ -62,9 +63,10 @@ void walker_sensor::laserCallback(const sensor_msgs::LaserScanConstPtr& scan) {
 * @return bool
 */
 bool walker_sensor::detectObstacle(double distThreshold) {
+  //if there is an obstacke
   if (this->distMin < distThreshold) {
     return true;
-  } else {
+  } else { //if there is no obstacke
     return false;
   }
 }
