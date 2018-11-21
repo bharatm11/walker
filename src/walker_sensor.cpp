@@ -53,7 +53,16 @@
 */
 void walker_sensor::laserCallback(const sensor_msgs::LaserScanConstPtr& scan) {
   //get minimum distance value from scan and equate to walker_sensor::distMin
-  this->distMin = *std::min_element(scan->ranges.begin(), scan->ranges.end());
+  // arbitrary max value
+  float min = 100;
+  // custom min function to get closest point
+  for (auto i : scan->ranges) {
+    if (!std::isnan(i)) {
+      if (i < min) { min = i;}
+    }
+  }
+  ROS_DEBUG("Distance: %f", min);
+  this->distMin = min;
 }
 /**
 * @brief This function determines if the robot needs to turn or not by
